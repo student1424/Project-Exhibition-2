@@ -1,0 +1,13 @@
+From: "Billing Dept." <accounts@quickbooks-online.info>
+To: <user@example.com>
+Subject: Overdue Invoice INV-00123
+Content-Type: text/plain;
+
+Dear client,
+
+This is a reminder that invoice INV-00123 for $1,250.50 is now overdue. Please find the invoice attached.
+
+Failure to pay will result in service interruption. Please remit payment immediately via the link in the attached document.
+
+Regards,
+Billing Department

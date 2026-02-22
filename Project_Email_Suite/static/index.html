@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Email Security Suite</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='style.css') }}"
+    />
+  </head>
+  <body>
+    <nav class="navbar">
+      <h1>Email Security Suite</h1>
+    </nav>
+
+    <main class="dashboard-grid">
+      <div class="input-column">
+        <!-- Analyze Text Card -->
+        <div class="card">
+          <h2>Analyze Text</h2>
+          <p class="card-subtitle">
+            Paste raw email content for an instant analysis.
+          </p>
+          <textarea
+            id="text-input"
+            placeholder="Enter email body here..."
+          ></textarea>
+          <button id="analyze-text-btn">Analyze</button>
+        </div>
+        <!-- Upload Email Card -->
+        <div class="card">
+          <h2>Upload Email (.eml)</h2>
+          <p class="card-subtitle">
+            Upload a full .eml file for content scanning.
+          </p>
+          <input type="file" id="eml-input" accept=".eml" class="file-input" />
+          <button id="analyze-eml-btn">Upload & Analyze</button>
+        </div>
+        <!-- Upload Attachment Card -->
+        <div class="card">
+          <h2>Upload Attachment</h2>
+          <p class="card-subtitle">Scan any file for potential threats.</p>
+          <input type="file" id="attachment-input" class="file-input" />
+          <button id="analyze-attachment-btn">Upload & Scan</button>
+        </div>
+      </div>
+
+      <div class="results-column">
+        <!-- Prediction Result Card -->
+        <div class="card">
+          <h2>Prediction Result</h2>
+          <div class="prediction-container">
+            <div id="prediction-badge" class="badge">Awaiting Scan...</div>
+            <div class="chart-container">
+              <canvas id="prediction-chart"></canvas>
+            </div>
+          </div>
+        </div>
+        <!-- Scan History Card -->
+        <div class="card">
+          <h2>Scan History (Last 10)</h2>
+          <ul id="history-list" class="history-list">
+            <!-- History items will be injected by JS -->
+          </ul>
+        </div>
+        <!-- Quarantine Card -->
+        <div class="card">
+          <h2>Quarantine Viewer</h2>
+          <ul id="quarantine-list" class="quarantine-list">
+            <!-- Quarantine items will be injected by JS -->
+          </ul>
+        </div>
+      </div>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+  </body>
+</html>

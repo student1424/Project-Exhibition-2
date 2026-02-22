@@ -1,0 +1,184 @@
+Delivered-To: leonardalphons@gmail.com
+Received: by 2002:a05:7110:9414:b0:276:b154:12ff with SMTP id di20csp2442706geb;
+        Wed, 10 Sep 2025 04:32:58 -0700 (PDT)
+X-Received: by 2002:a05:6102:809f:b0:4e4:5ed0:19b2 with SMTP id ada2fe7eead31-53d1c3d661cmr5284467137.9.1757503977718;
+        Wed, 10 Sep 2025 04:32:57 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1757503977; cv=none;
+        d=google.com; s=arc-20240605;
+        b=HOUHJxr5YKzxyY8wYmKY9QePGONf9irEzrgclJiQzgG9Mhg2hb8cfZyq+UuH8Km6BT
+         HMWAULpVHH8tXRO4up4XZlWDdWX96oY/uAyBcN5X95PxiJtHwiT/IO6D+w8D6XmWFh2h
+         LuatujhLg1RR48lNN95JzORpnzrxedTfsA+bdHkjplzf/dagJCrpiA3zL7OlCPKgO9aD
+         /V3Fs3rnUnJ0hRLZNSbilJaVfaagvf2sF22fMaH67nUuRupzK3zEhpxK6Wyieu3dzmX1
+         m6eSI7gV1lv4lGAbJxRtbF8Z0rNcoNoMHHzUH/J/WYzLAUNFB5YjKlUx0lNw+q4Vm/X1
+         J44Q==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=to:subject:message-id:date:from:sender:mime-version:dkim-signature;
+        bh=ojL1AgQTDrmERIb1NUhG1faeO8HwF7JRHi37q2dlKOQ=;
+        fh=ChA/PGL6jANcHnm+Y42kIbbwSDtqrGsUlrcHkT/FPKk=;
+        b=M+XxmNT6NaazjlG8+Jy4xAzp/zdliySC0SxmXfd9HjO0YlEr+SoB1ISw8e9/wH2cla
+         VK7oB28K0lNqMLCaJRidl2K4NOcANq3WVcjzkrfi00tQnFpLbq0QUVD4AHlymnZagGIp
+         WtUmJNhldDgHGoILRrmvN5jy0M2NQxTKT28nSSiO1yp1RTYsbcvY9KnCm3wzji9GSoOm
+         sEqYPEClmgeRumTnpBLyiF3SUfKy+8tlbbenOl4AWQ8/FehxfLS9ReuY9fmWSVWtpfyw
+         kU7NldchOc/gJGGdTVcRO9fY0MifL9IESImeKP1i90hEnO0eZujY1OgR+6tZnL0GPdD9
+         SAcg==;
+        dara=google.com
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@unloxacademy-com.20230601.gappssmtp.com header.s=20230601 header.b=Z5eFFHLT;
+       spf=pass (google.com: domain of amit.pv@unloxacademy.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=amit.pv@unloxacademy.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=unloxacademy.com;
+       dara=pass header.i=@gmail.com
+Return-Path: <amit.pv@unloxacademy.com>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id a1e0cc1a2514c-8be500d9573sor1911948241.6.2025.09.10.04.32.57
+        for <leonardalphons@gmail.com>
+        (Google Transport Security);
+        Wed, 10 Sep 2025 04:32:57 -0700 (PDT)
+Received-SPF: pass (google.com: domain of amit.pv@unloxacademy.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@unloxacademy-com.20230601.gappssmtp.com header.s=20230601 header.b=Z5eFFHLT;
+       spf=pass (google.com: domain of amit.pv@unloxacademy.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=amit.pv@unloxacademy.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=unloxacademy.com;
+       dara=pass header.i=@gmail.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=unloxacademy-com.20230601.gappssmtp.com; s=20230601; t=1757503977; x=1758108777; dara=google.com;
+        h=to:subject:message-id:date:from:sender:mime-version:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=ojL1AgQTDrmERIb1NUhG1faeO8HwF7JRHi37q2dlKOQ=;
+        b=Z5eFFHLT270PhcwjKgJP/KVoMndW60Dq8bxGlXmM4sxwqL6auPrhUYxmYmnKn3KQ6J
+         cYKCB7GAa+/SvCt2RHgp2kIkZhpWhMMkdS8d6VfgQmwSimxjM6EBy5ViZTgTXtQvJbX+
+         ZP7hbkyz5d9Al/JmvNlGe8spUEy8TLNc6oOth5gCUOBpQP3vyURWUcv8bFpaWv9TE7eU
+         Ua8TGXH8boVD0l/8EohJdDo38bp/755Y+3aXjeXHKFIObdtn37NF9rDLxZsvjBFKKpd1
+         VncCCBLmZsI9JCXAe1TsZvH9MlgsGqdoXFGDSvwD8IDiLlwNQZo5qQZf5PJpPZJxpnO0
+         BM4g==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1757503977; x=1758108777;
+        h=to:subject:message-id:date:from:sender:mime-version
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=ojL1AgQTDrmERIb1NUhG1faeO8HwF7JRHi37q2dlKOQ=;
+        b=S5bvwYm130+wjh8s75uPZdbHVc4W2P+rbqU+iTA6cfer0q1GtS5W0X2rgRbyKLY6wM
+         h+TfhHO50iKjONfz42dBEAa777eggVOJFqsCqeLVxd+T1u/eFShbCYApmQ1ESF0uN8Wa
+         6Po9aRXtQ+/pMaPsnL1jFQTTehIcEhjxe4O4qbUDWIE/PdZ5/eD2YmB5IfotRBb3OVXc
+         SsMe/5QMW4UFA8hVWh7bc/7ANsj498P1Jn529wr6r8mPUOQ57M8zVr555MuoaXpJ7JJH
+         9IbtuduovjjAPCrBreNSG6owUlIh8sj4PZTx2935nhiElvUA6PkmHRWTgYc98no+/MYp
+         UgpQ==
+X-Gm-Message-State: AOJu0YxHi6NpI6PVlzvvbczQJ5ofTFGc5Skcu4paEhQ0LwF5qF0EJ61r
+	0fEI2j2SnQ1dlHcuGNrv4Uh7KMO0I/zA2+wtEBBB7LQPU/F4Tmmih9jAp4VsPA9sHXPVOP+BzoD
+	pm85ifX1XShh6f1E9PVU88i4vsJeHOoBgyKkr7D/BvJGcCnz02At+Zw==
+X-Gm-Gg: ASbGncutbaW8ijUA4yoCw9/ieunM3UjkLLgEpK6dY2es2pWoD3UKgf9wH6gqOnuOzCd
+	PCZ14T9vUa7Lay62Q4CDeYgwRyWal+RD2Tu2R7HiApIyhAIVYdeUYmdn3BbDP3AUaTN4ZSSbzG8
+	3W9Lb7z+IL0vPU3Zxw654y81fp3I5q87wFPDVhozDjFmUNXgtHJVI7G5leimyhjusDO3OKbTng3
+	WngJv2DdHBJU0imCw==
+X-Google-Smtp-Source: AGHT+IE7uPDDo64jO07/PHdtNQqw3S1vvklVH4eraKTDv6IA9xAu7S5qzusaBIj5N94vEmqwagEmbssZdavx6hS7YU0=
+X-Received: by 2002:a05:6102:2d09:b0:4e5:ac0f:582c with SMTP id
+ ada2fe7eead31-53d1c3d6e68mr5425821137.13.1757503976688; Wed, 10 Sep 2025
+ 04:32:56 -0700 (PDT)
+Received: from 1015770972032 named unknown by gmailapi.google.com with
+ HTTPREST; Wed, 10 Sep 2025 11:32:55 +0000
+Received: from 1015770972032 named unknown by gmailapi.google.com with
+ HTTPREST; Wed, 10 Sep 2025 11:32:55 +0000
+MIME-Version: 1.0
+Sender: amit.pv@unloxacademy.com
+From: amit.pv@unloxacademy.com
+Date: Wed, 10 Sep 2025 11:32:55 +0000
+X-Google-Sender-Auth: Mwwu2Xn9z2p_k_R5ecTrZPZBC0U
+X-Gm-Features: AS18NWD1EcWaIzBvYJBABhfcbLC2nvTVpgl3Rd5zCEytz33sJj6A4cTxjSdV3eY
+Message-ID: <CA+=Fefz3x9fh+eKOxLHdTzF0sLj3EMkF3JBUYFefN-C3mOihcg@mail.gmail.com>
+Subject: LEONARD ALPHONS Selected: Congratulations on being selected for the
+ Volunteer role for your Campus | Registration
+To: leonardalphons@gmail.com
+Content-Type: multipart/alternative; boundary="00000000000038e012063e70c816"
+
+--00000000000038e012063e70c816
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+*Dear **LEONARD ALPHONS**, Congratulations on being Shortlisted!*
+
+Welcome student!
+Want to *stand out*, *build leadership skills*, and *get noticed by top
+companies* =E2=80=93 all while enjoying exclusive perks?
+
+We invite you to become a *Campus Delegate* for our Internship & Training
+Program, powered by *Startup India*, *Skill India*, and *T**op MNCs*.
+
+*Application Form: https://forms.gle/f4iyCu26c7ASPrnm7
+<https://forms.gle/f4iyCu26c7ASPrnm7>*
+------------------------------
+What You=E2=80=99ll Do:
+
+   - Represent the internship program at your campus
+   - Share opportunities with your peers
+   - Organize awareness campaigns and info sessions
+   - Be the go-to link between students and the internship team
+
+
+
+------------------------------
+What You=E2=80=99ll Get:
+
+   - Official Campus Delegate Certificate
+   - Letter of Recommendation (LOR) for career or higher studies
+   - Earn monthly Stipend upto 21,000/month
+   - Will get learning Tablet
+   - Exclusive access to masterclasses, resume workshops & AI tools
+   - Early-bird access to internships & events
+   - Recognition across college networks
+
+
+
+------------------------------
+Who Can Apply:
+
+   - 1st and 2nd-year students from any department
+   - Passionate about leadership, communication, and growth
+   - No prior experience required =E2=80=94 just enthusiasm!
+
+Don=E2=80=99t miss this chance to build your *personal brand*, grow your *n=
+etwork*,
+and make your *mark on campus* =E2=80=94 from day one!
+
+
+
+*Warm regards,Hiring TeamUnlox Academy*
+
+--00000000000038e012063e70c816
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr"><p><font color=3D"#000000"><strong>Dear=C2=A0</strong></fo=
+nt><b><font color=3D"#000000">LEONARD ALPHONS</font></b><strong><font color=
+=3D"#000000">,</font>=C2=A0<font color=3D"#0b5394">Congratulations on being=
+ Shortlisted!</font></strong></p><p>Welcome student!=C2=A0<br>Want to=C2=A0=
+<strong>stand out</strong>,=C2=A0<strong>build leadership skills</strong>, =
+and=C2=A0<strong>get noticed by top companies</strong>=C2=A0=E2=80=93 all w=
+hile enjoying exclusive perks?</p><p>We invite you to become a=C2=A0<strong=
+>Campus Delegate</strong>=C2=A0for our Internship &amp; Training Program, p=
+owered by=C2=A0<strong>Startup India</strong>,=C2=A0<strong>Skill India</st=
+rong>, and=C2=A0<b>T</b><strong>op MNCs</strong>.</p><p><b><font size=3D"4"=
+><span style=3D"background-color:rgb(194,123,160)"><font color=3D"#000000">=
+Application Form:</font></span>=C2=A0<a href=3D"https://forms.gle/f4iyCu26c=
+7ASPrnm7" target=3D"_blank">https://forms.gle/f4iyCu26c7ASPrnm7</a></font><=
+/b></p><hr><h3>What You=E2=80=99ll Do:</h3><ul><li style=3D"margin-left:15p=
+x">Represent the internship program at your campus</li><li style=3D"margin-=
+left:15px">Share opportunities with your peers</li><li style=3D"margin-left=
+:15px">Organize awareness campaigns and info sessions</li><li style=3D"marg=
+in-left:15px">Be the go-to link between students and the internship team</l=
+i></ul><ul></ul><hr><h3>What You=E2=80=99ll Get:</h3><ul><li style=3D"margi=
+n-left:15px">Official=C2=A0Campus Delegate=C2=A0Certificate</li><li style=
+=3D"margin-left:15px">Letter of Recommendation (LOR) for career or higher s=
+tudies</li><li style=3D"margin-left:15px">Earn monthly Stipend upto 21,000/=
+month</li><li style=3D"margin-left:15px">Will get learning Tablet</li><li s=
+tyle=3D"margin-left:15px">Exclusive access to masterclasses, resume worksho=
+ps &amp; AI tools</li><li style=3D"margin-left:15px">Early-bird access to i=
+nternships &amp; events</li><li style=3D"margin-left:15px">Recognition acro=
+ss college networks</li></ul><ul></ul><hr><h3>Who Can Apply:</h3><ul><li st=
+yle=3D"margin-left:15px">1st and 2nd-year students from any department</li>=
+<li style=3D"margin-left:15px">Passionate about leadership, communication, =
+and growth</li><li style=3D"margin-left:15px">No prior experience required =
+=E2=80=94 just enthusiasm!</li></ul><p>Don=E2=80=99t miss this chance to bu=
+ild your=C2=A0<strong>personal brand</strong>, grow your=C2=A0<strong>netwo=
+rk</strong>, and make your=C2=A0<strong>mark on campus</strong>=C2=A0=E2=80=
+=94 from day one!</p><p><b>Warm regards,<br><font color=3D"#444444">Hiring =
+Team<br><i>Unlox Academy</i></font></b></p></div>
+
+--00000000000038e012063e70c816--

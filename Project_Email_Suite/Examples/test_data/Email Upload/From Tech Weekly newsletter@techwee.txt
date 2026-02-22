@@ -1,0 +1,13 @@
+From: "Tech Weekly" <newsletter@techweekly.com>
+To: "Valued Reader" <user@example.com>
+Subject: Your Weekly Tech Roundup!
+Content-Type: text/plain;
+
+Hello,
+
+Welcome to your weekly dose of tech news. This week, we cover the latest advancements in AI-powered software development and the future of renewable energy for data centers.
+
+Read more on our blog.
+
+Thanks,
+The Tech Weekly Team

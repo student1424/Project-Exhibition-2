@@ -1,0 +1,855 @@
+Delivered-To: leonardalphons@gmail.com
+Received: by 2002:a05:7110:3494:b0:2a8:47a9:f359 with SMTP id q20csp850559ged;
+        Sat, 20 Sep 2025 10:20:18 -0700 (PDT)
+X-Received: by 2002:a05:6602:7194:b0:887:681b:cc23 with SMTP id ca18e2360f4ac-8ade5e993cfmr971828939f.17.1758388818720;
+        Sat, 20 Sep 2025 10:20:18 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1758388818; cv=none;
+        d=google.com; s=arc-20240605;
+        b=VMJPPY/yN63K+89wp17Zqjk4KGzmdxYAeUehFOC1Tew70u2rMtqSTmCWcl/sQ69BhF
+         imWBvlaepKNOrtxrokntEBuy3tt91QPOeo9BCzMjU8X39INgeW3uWRFSnYtr9+BxeAGA
+         nPFmcjzKU6CCzlU+koy3S6wRbOV4R7Ik5B0XJ1qg6VNHo0VfFLVgcYywo62SwDz1oC9G
+         7oGaAIOa+tlaPBX/+4qC2VW28Ef+bCsE7NeRPGnhE5vC3sfilGXyepnsVM1gwsR8htfR
+         +Ouh7UJ+mx8n7I+DehkIQWbHgxS+7FZKrgS+d2Imswt0NFGxNGP5ERqFKbfVrSm2+aGA
+         pcWQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=to:from:subject:message-id:feedback-id:reply-to:date:mime-version
+         :dkim-signature;
+        bh=Tk2dCw3PJhwUdnFN3/ZiCM6s9hIFx/keKUkwx9kJT6c=;
+        fh=ChA/PGL6jANcHnm+Y42kIbbwSDtqrGsUlrcHkT/FPKk=;
+        b=gKGNPrgkxCAql0rxgUa5o636E6MNzEZhDKu8dnB7xLuqJ04cPfw1Ae7I73Y2eu6Plo
+         YUSbjNPn7uN+TdGLsalycEKff7M1JW3wC8vLIvO8SpV/SbyvnyP6XJ2Tyc9SXjB3ognc
+         j1/hIHSFu/TGLRqv3Dxxx81FJaF1WRv/LsU0jmNv1rVxzDsWLhLH51MuZjj08GUQRir4
+         nnqxLdS+ai9PglPkP9RFmJgQlBZCg4bVKFq7fSuCE+RfC6eiuXN2R1iahvvGUvrwePDE
+         BuNVDH4uTFuDcpq9mF4LWtdQOyli61AIxa9lfi1NcoeMHY8l0mLcans5Vmw8roq2Rwr6
+         dwKg==;
+        dara=google.com
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@kaggle.com header.s=20230601 header.b=FheTtOXh;
+       spf=pass (google.com: domain of 3uuloaackdp8mnqdokxj9ffkd.bnlkdnm9qc9kognmrfl9hk.bnl@scoutcamp.bounces.google.com designates 209.85.220.69 as permitted sender) smtp.mailfrom=3UuLOaAcKDp8MNQDOKXJ9FFKD.BNLKDNM9QC9KOGNMRFL9HK.BNL@scoutcamp.bounces.google.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=kaggle.com;
+       dara=pass header.i=@gmail.com
+Return-Path: <3UuLOaAcKDp8MNQDOKXJ9FFKD.BNLKDNM9QC9KOGNMRFL9HK.BNL@scoutcamp.bounces.google.com>
+Received: from mail-sor-f69.google.com (mail-sor-f69.google.com. [209.85.220.69])
+        by mx.google.com with SMTPS id ca18e2360f4ac-8a47f2fe6f3sor519651239f.7.2025.09.20.10.20.18
+        for <leonardalphons@gmail.com>
+        (Google Transport Security);
+        Sat, 20 Sep 2025 10:20:18 -0700 (PDT)
+Received-SPF: pass (google.com: domain of 3uuloaackdp8mnqdokxj9ffkd.bnlkdnm9qc9kognmrfl9hk.bnl@scoutcamp.bounces.google.com designates 209.85.220.69 as permitted sender) client-ip=209.85.220.69;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@kaggle.com header.s=20230601 header.b=FheTtOXh;
+       spf=pass (google.com: domain of 3uuloaackdp8mnqdokxj9ffkd.bnlkdnm9qc9kognmrfl9hk.bnl@scoutcamp.bounces.google.com designates 209.85.220.69 as permitted sender) smtp.mailfrom=3UuLOaAcKDp8MNQDOKXJ9FFKD.BNLKDNM9QC9KOGNMRFL9HK.BNL@scoutcamp.bounces.google.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=kaggle.com;
+       dara=pass header.i=@gmail.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=kaggle.com; s=20230601; t=1758388818; x=1758993618; dara=google.com;
+        h=to:from:subject:message-id:feedback-id:reply-to:date:mime-version
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=Tk2dCw3PJhwUdnFN3/ZiCM6s9hIFx/keKUkwx9kJT6c=;
+        b=FheTtOXh99zphNaxTK8Urio0zOW8WeKMNpbkmzwb1z3Idaql0hC3Mt1kmTHI8sKQ20
+         aphOWfyWc1ljUAblZR3B0t+16yg1qhD/oNLBJKHOcnLF4DM1TJ/NdNEOAyMj9NQXw/Dp
+         xPLf6axsHqbWxbdRL3rNrWFN45bootSWAus9qmnoNxcDHxdi2zV1BKnsbvC64+2OsUVH
+         Q8bS/mgA+/QMtxPwmesTCUxoFLjXzPugGdteRjgSZChtZZa4njhA2VPEVCAec2IVaZwz
+         lKaxLbNJQ7kcP/ab4ZzVgJLX8es/89KdO2qcLmOQugdREmrO8pPl9hA0tUkw1yz49wrD
+         qTsw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1758388818; x=1758993618;
+        h=to:from:subject:message-id:feedback-id:reply-to:date:mime-version
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=Tk2dCw3PJhwUdnFN3/ZiCM6s9hIFx/keKUkwx9kJT6c=;
+        b=Co37HoSJzssE7XFMwXjNi9LfSSIZH8wgo8m5ej4iqtTkYejgKVUyvDrRFVTRpqU7SN
+         e0kzLtDjr6jVjtFD4HSbmPtlQvnhBGbQmnZ/YoRZyO+Om7CiQlYPhemasTLioJ+1P36W
+         plf13RbftVW8uTsh9cpri/7GcjSrwlKEm0m89DbonRPh5A0eDX9oV8kZJkuf1Tl+bklg
+         2k8hOASQtaLbC5mfdCXqrVHKE7kq+4G0B8loi1WmKjz8bZCYamQsECbk7hTdAF75neuO
+         2lOVxxXOa+/NDp1kPbqekn9nEx5PfVAJSMuOLxBBhLoND4+a7HjY1GGR1fi2yiwsRhKX
+         Lkjg==
+X-Gm-Message-State: AOJu0YxT6Rjx+h0wxoLZhyxy163cvK2UqYoZcqfQESUZMmHvJlyHPJvL
+	c+fIcaiN8CEvwxlIHvXzTuH6pgz5/pWIjj8Nk0AsWtEbpG4Psf8=
+X-Google-Smtp-Source: AGHT+IHkH0DWFyqD4RfMUFji7aXRdlvMeh+1g3vipHntY0m1Y3mHgZAUB2rtffQaAI+iRYFDbRz/uAI=
+MIME-Version: 1.0
+X-Received: by 2002:a05:6602:15c3:b0:894:14a3:d3e9 with SMTP id
+ ca18e2360f4ac-8ade3fe580bmr1016492039f.14.1758388818476; Sat, 20 Sep 2025
+ 10:20:18 -0700 (PDT)
+Date: Sat, 20 Sep 2025 10:20:18 -0700
+Reply-To: Kaggle <noreply@kaggle.com>
+X-Google-Id: 4030869
+Feedback-ID: P2603-0:C20126035:M110331920-en-US:gamma
+X-Notifications: 58f1b45defba0000
+X-Notifications-Bounce-Info: AWoTSIEFga38E_jTzxC9LHnhf9bgGAumzmjmu-geFy_aaa3EQCBN_p5oqWA5IN651ZL_b7EDcxQlWjf1RQdymbJqcOCrgkppFc8Wzw5nqcMACxx1l0FAMVqsNCIS1gjPIfCEKvZyDQpl7X4x8MU6BaVQC51BBDjgKakTOwPt2VZ6W2xPuqSPEEYHQj4GqwwP2_tAu6oNr7vwJLmhhWz3rhwu-XMFkt69OrMkJ3G4yzjzT4_h-bB2GjgMzS6mlGe-KhVeIKRLBjSysWgI1xhu9nm4wlUlVDS1l301CnodntiZqeGi4gPT-2gFTmhZFAlQtRLY_O_hQsFmzzjp0fR8E2zD3TXXhcEc55UwQ2Em4KJarcPSJxCmu0k2vrmvYXp70_lbiBNJ1b5WJyTW3ZhRRSJiArKiapA2532-7ZkIL3JdmIHzgxA_DGBR5H8Zp-hv2Z9Y-usYKgQNjAwNjA0MDQxNTM1NTk2OTMzMg
+Message-ID: <a0aa7c2231519c09881ef14ecfaf372c49c814ea-20126035-110779040@google.com>
+Subject: =?UTF-8?Q?You=E2=80=99re_officially_a_Kaggler=2E_Now_what=3F?=
+From: Kaggle <noreply@kaggle.com>
+To: leonardalphons@gmail.com
+Content-Type: multipart/alternative; boundary="000000000000e702dc063f3ecc68"
+
+--000000000000e702dc063f3ecc68
+Content-Type: text/plain; charset="UTF-8"; format=flowed; delsp=yes
+
+Kaggle
+
+
+
+
+
+
+Hi hpllaa,
+
+You're now part of the world's largest data science community. Welcome,  
+we're glad you're here!
+
+Whether you're new to machine learning or a renowned expert, we want to  
+support you with powerful tools and resources to help you grow as a data  
+scientist.
+
+So, where's the best place to start?
+
+We highly recommend trying out our popular Titanic competition. You'll be  
+challenged to predict which passengers survived the infamous 1912 shipwreck.
+
+
+
+
+
+Get Started Here
+
+
+
+It's a quick way to get a strong grasp of how our platform works. You'll  
+become more familiar with how our notebooks (online coding environment with  
+no cost GPUs), open datasets, and open pretrained models work together to  
+help you build data science projects.
+
+
+
+
+Your agreement with Kaggle
+
+About your Kaggle Account
+
+A Kaggle Account allows you to access a range of Kaggle services, such as  
+notebooks, datasets, and machine learning competitions.
+
+Terms of Use
+
+The Kaggle Terms of Use help to define the relationship between you and  
+Kaggle. They describe what you can expect from using Kaggle services and  
+what we expect from you. Kaggle services are provided by and you have a  
+contract with:
+
+
+Kaggle Inc.
+1600 Amphitheatre Parkway
+Mountain View, California 94043
+United States of America
+support@kaggle.com
+
+
+You can use your Kaggle Account for an unlimited time. That means that the  
+contract doesn't end automatically, but you can terminate it when you want.
+
+Right of withdrawal
+
+If you're an EEA-based consumer, your contract with Kaggle is by law  
+subject to an automatic right of withdrawal for 14 days from the date of  
+the conclusion of the contract. To exercise the right of withdrawal, you  
+must inform us of your decision to withdraw from this contract by an  
+unequivocal statement (eg a letter sent by post or an e-mail). You can find  
+contact details in the Kaggle Terms of Use. You don't need to give a reason  
+for your withdrawal and your withdrawal is within the deadline if you send  
+us the withdrawal request before the withdrawal period expires.
+
+
+
+
+Questions?
+
+Visit our Help Center to learn all about your new Kaggle Account, find  
+answers to FAQs and to reach out to our support team.
+
+Happy exploring,
+
+The Kaggle Team
+
+
+
+Kaggle, Inc 1600 Amphitheatre Pkwy Mountain View, CA 94043
+
+You've received this email to confirm that you're registered for Kaggle.
+
+
+
+
+
+--000000000000e702dc063f3ecc68
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<!doctype html>
+<html xmlns=3Dhttp://www.w3.org/1999/xhtml xmlns:v=3Durn:schemas-microsoft-=
+com:vml xmlns:o=3Durn:schemas-microsoft-com:office:office lang=3Den xml:lan=
+g=3Den>
+  <head>
+    <meta http-equiv=3DContent-Type content=3D"text/html; charset=3DUTF-8">
+    <title>Welcome to Kaggle</title>
+    <style type=3Dtext/css>
+      @font-face {
+        font-family: "Inter";
+        font-style: normal;
+        font-weight: 500;
+        font-display: swap;
+        src: url(https://fonts.gstatic.com/s/inter/v2/UcC73FwrK3iLTeHuS_fvQ=
+tMwCp50KnMa2JL7W0Q5n-wU.woff2)
+          format("woff2");
+      }
+      /* cyrillic */
+      @font-face {
+        font-family: "Inter";
+        font-style: normal;
+        font-weight: 500;
+        font-display: swap;
+        src: url(https://fonts.gstatic.com/s/inter/v2/UcC73FwrK3iLTeHuS_fvQ=
+tMwCp50KnMa0ZL7W0Q5n-wU.woff2)
+          format("woff2");
+      }
+      /* greek-ext */
+      @font-face {
+        font-family: "Inter";
+        font-style: normal;
+        font-weight: 500;
+        font-display: swap;
+        src: url(https://fonts.gstatic.com/s/inter/v2/UcC73FwrK3iLTeHuS_fvQ=
+tMwCp50KnMa2ZL7W0Q5n-wU.woff2)
+          format("woff2");
+      }
+      /* greek */
+      @font-face {
+        font-family: "Inter";
+        font-style: normal;
+        font-weight: 500;
+        font-display: swap;
+        src: url(https://fonts.gstatic.com/s/inter/v2/UcC73FwrK3iLTeHuS_fvQ=
+tMwCp50KnMa1pL7W0Q5n-wU.woff2)
+          format("woff2");
+      }
+      /* vietnamese */
+      @font-face {
+        font-family: "Inter";
+        font-style: normal;
+        font-weight: 500;
+        font-display: swap;
+        src: url(https://fonts.gstatic.com/s/inter/v2/UcC73FwrK3iLTeHuS_fvQ=
+tMwCp50KnMa2pL7W0Q5n-wU.woff2)
+          format("woff2");
+      }
+      /* latin-ext */
+      @font-face {
+        font-family: "Inter";
+        font-style: normal;
+        font-weight: 500;
+        font-display: swap;
+        src: url(https://fonts.gstatic.com/s/inter/v2/UcC73FwrK3iLTeHuS_fvQ=
+tMwCp50KnMa25L7W0Q5n-wU.woff2)
+          format("woff2");
+      }
+      /* latin */
+      @font-face {
+        font-family: "Inter";
+        font-style: normal;
+        font-weight: 500;
+        font-display: swap;
+        src: url(https://fonts.gstatic.com/s/inter/v2/UcC73FwrK3iLTeHuS_fvQ=
+tMwCp50KnMa1ZL7W0Q5nw.woff2)
+          format("woff2");
+      }
+      /* cyrillic-ext */
+      @font-face {
+        font-family: "Inter";
+        font-style: normal;
+        font-weight: 600;
+        font-display: swap;
+        src: url(https://fonts.gstatic.com/s/inter/v2/UcC73FwrK3iLTeHuS_fvQ=
+tMwCp50KnMa2JL7W0Q5n-wU.woff2)
+          format("woff2");
+      }
+      /* cyrillic */
+      @font-face {
+        font-family: "Inter";
+        font-style: normal;
+        font-weight: 600;
+        font-display: swap;
+        src: url(https://fonts.gstatic.com/s/inter/v2/UcC73FwrK3iLTeHuS_fvQ=
+tMwCp50KnMa0ZL7W0Q5n-wU.woff2)
+          format("woff2");
+      }
+      /* greek-ext */
+      @font-face {
+        font-family: "Inter";
+        font-style: normal;
+        font-weight: 600;
+        font-display: swap;
+        src: url(https://fonts.gstatic.com/s/inter/v2/UcC73FwrK3iLTeHuS_fvQ=
+tMwCp50KnMa2ZL7W0Q5n-wU.woff2)
+          format("woff2");
+      }
+      /* greek */
+      @font-face {
+        font-family: "Inter";
+        font-style: normal;
+        font-weight: 600;
+        font-display: swap;
+        src: url(https://fonts.gstatic.com/s/inter/v2/UcC73FwrK3iLTeHuS_fvQ=
+tMwCp50KnMa1pL7W0Q5n-wU.woff2)
+          format("woff2");
+      }
+      /* vietnamese */
+      @font-face {
+        font-family: "Inter";
+        font-style: normal;
+        font-weight: 600;
+        font-display: swap;
+        src: url(https://fonts.gstatic.com/s/inter/v2/UcC73FwrK3iLTeHuS_fvQ=
+tMwCp50KnMa2pL7W0Q5n-wU.woff2)
+          format("woff2");
+      }
+      /* latin-ext */
+      @font-face {
+        font-family: "Inter";
+        font-style: normal;
+        font-weight: 600;
+        font-display: swap;
+        src: url(https://fonts.gstatic.com/s/inter/v2/UcC73FwrK3iLTeHuS_fvQ=
+tMwCp50KnMa25L7W0Q5n-wU.woff2)
+          format("woff2");
+      }
+      /* latin */
+      @font-face {
+        font-family: "Inter";
+        font-style: normal;
+        font-weight: 600;
+        font-display: swap;
+        src: url(https://fonts.gstatic.com/s/inter/v2/UcC73FwrK3iLTeHuS_fvQ=
+tMwCp50KnMa1ZL7W0Q5nw.woff2)
+          format("woff2");
+      }
+      /* cyrillic-ext */
+      @font-face {
+        font-family: "Inter";
+        font-style: normal;
+        font-weight: 700;
+        font-display: swap;
+        src: url(https://fonts.gstatic.com/s/inter/v2/UcC73FwrK3iLTeHuS_fvQ=
+tMwCp50KnMa2JL7W0Q5n-wU.woff2)
+          format("woff2");
+      }
+      /* cyrillic */
+      @font-face {
+        font-family: "Inter";
+        font-style: normal;
+        font-weight: 700;
+        font-display: swap;
+        src: url(https://fonts.gstatic.com/s/inter/v2/UcC73FwrK3iLTeHuS_fvQ=
+tMwCp50KnMa0ZL7W0Q5n-wU.woff2)
+          format("woff2");
+      }
+      /* greek-ext */
+      @font-face {
+        font-family: "Inter";
+        font-style: normal;
+        font-weight: 700;
+        font-display: swap;
+        src: url(https://fonts.gstatic.com/s/inter/v2/UcC73FwrK3iLTeHuS_fvQ=
+tMwCp50KnMa2ZL7W0Q5n-wU.woff2)
+          format("woff2");
+      }
+      /* greek */
+      @font-face {
+        font-family: "Inter";
+        font-style: normal;
+        font-weight: 700;
+        font-display: swap;
+        src: url(https://fonts.gstatic.com/s/inter/v2/UcC73FwrK3iLTeHuS_fvQ=
+tMwCp50KnMa1pL7W0Q5n-wU.woff2)
+          format("woff2");
+      }
+      /* vietnamese */
+      @font-face {
+        font-family: "Inter";
+        font-style: normal;
+        font-weight: 700;
+        font-display: swap;
+        src: url(https://fonts.gstatic.com/s/inter/v2/UcC73FwrK3iLTeHuS_fvQ=
+tMwCp50KnMa2pL7W0Q5n-wU.woff2)
+          format("woff2");
+      }
+      /* latin-ext */
+      @font-face {
+        font-family: "Inter";
+        font-style: normal;
+        font-weight: 700;
+        font-display: swap;
+        src: url(https://fonts.gstatic.com/s/inter/v2/UcC73FwrK3iLTeHuS_fvQ=
+tMwCp50KnMa25L7W0Q5n-wU.woff2)
+          format("woff2");
+      }
+      /* latin */
+      @font-face {
+        font-family: "Inter";
+        font-style: normal;
+        font-weight: 700;
+        font-display: swap;
+        src: url(https://fonts.gstatic.com/s/inter/v2/UcC73FwrK3iLTeHuS_fvQ=
+tMwCp50KnMa1ZL7W0Q5nw.woff2)
+          format("woff2");
+      }
+      html {
+        background: #f5f5f5;
+        font-family: "Inter", sans-serif;
+      }
+
+      /* WINDOWS 10 MAIL LINK FIX */
+      a {
+        text-decoration: none;
+      }
+
+      /* iOS GMAIL WEB FONT SIZE FIX */
+      .gmail-fix {
+        display: none;
+        display: none !important;
+      }
+
+      /* iOS GMAIL APP WIDTH FIX */
+      u + #new-gmail-fix {
+        display: block !important;
+      }
+
+      /* /////////////////// FIX */
+      .cta-hover:hover {
+        background-color: #639420 !important;
+        color: #ffffff !important;
+      }
+
+      /* /////////////////// FIX */
+      /* CTA ROLLOVER IF SUPPORTED */
+      .cta-hover:hover {
+        color: #ffffff !important;
+        background-color: #639420 !important;
+      }
+
+      .overline {
+        font-family: "Inter", sans-serif;
+        font-size: 10px;
+        padding: 0;
+        margin: 0;
+        color: #202124;
+        letter-spacing: 1px;
+        text-transform: capitalize;
+      }
+
+      h1 {
+        font-family: "Inter", sans-serif;
+        font-weight: 700;
+        font-size: 36px;
+        color: #202124;
+        letter-spacing: -0.02px;
+        margin: 0;
+      }
+
+      .body1 {
+        font-family: Inter-Medium;
+        font-size: 16px;
+        color: #3c4043;
+        letter-spacing: -0.02px;
+        line-height: 24px;
+      }
+
+      h2 {
+        font-family: "Inter", sans-serif;
+        font-weight: 700;
+        font-size: 28px;
+        color: #202124;
+        letter-spacing: -0.02px;
+        margin: 38px 0 0 0;
+      }
+
+      body {
+      }
+      .side-padding {
+          padding: 0 92px 0 92px;
+          margin: 0;
+        }
+
+      @media screen and (min-width: 600px) {
+        .side-padding {
+          padding: 0 92px 0 92px;
+          margin: 0;
+        }
+      }
+
+      @media screen and (max-width: 600px) {
+        .side-padding {
+          padding: 0 24px 0 24px;
+          margin: 0;
+        }
+      }
+    </style>
+
+    <!--[if mso]>
+      <style type=3D"text/css">
+        table {
+          border-collapse: collapse;
+          mso-table-lspace: 0pt;
+          mso-table-rspace: 0pt;
+        }
+        table td {
+          border-collapse: collapse;
+        }
+        .mso-cta {
+          padding: 10px 0 10px 0 !important;
+          font-weight: bold !important;
+        }
+      </style>
+    <![endif]-->
+  </head>
+
+  <body bgcolor=3D#F5F5F5 style=3D"padding: 0; margin: 0; background: #f5f5=
+f5">
+    <center>
+      <!-- OUTER WRAPPER -->
+      <table align=3Dcenter bgcolor=3D#F5F5F5 border=3D0 cellpadding=3D0 ce=
+llspacing=3D0 width=3D100% role=3Dpresentation>
+        <tbody>
+          <tr>
+            <td align=3Dcenter style=3D"padding: 0px 0 0 0">
+              <!-- CONTENT CONTAINER -->
+              <table align=3Dcenter border=3D0 cellpadding=3D0 cellspacing=
+=3D0 width=3D600 role=3Dpresentation>
+                <tbody>
+                  <tr bgcolor=3D#F5F5F5 height=3D32>
+                    <td style=3D"padding: 0 0 0 0; height: 32px"></td>
+                  </tr>
+                  <tr bgcolor=3D#F5F5F5>
+                    <td align=3Dcenter style=3D"padding: 0 0 30px 0" width=
+=3D600px>
+                      <img alt=3DKaggle border=3D0 src=3Dhttps://storage.go=
+ogleapis.com/kaggle-media/Images/Kaggle_Blue.png alt=3D"=E2=80=9CKaggle=E2=
+=80=9D" style=3D"
+                          display: block;
+                          outline: none;
+                          height: auto;
+                          height: 40px;
+                          width: 104px;
+                        " width=3D104>
+                    </td>
+                  </tr>
+               =20
+                  <!-- TEXT CONTENT CONTAINER -->
+                  <tr bgcolor=3D#FFFFFF>
+                    <td align=3Dcenter style=3D"padding: 0 0 0 0" width=3D6=
+00px>
+                      <table align=3Dcenter border=3D0 cellpadding=3D0 cell=
+spacing=3D0 width=3D600 role=3Dpresentation>
+                        <tbody>
+                          <tr bgcolor=3D#FFFFFF height=3D36>
+                            <td style=3D"padding: 0 0 0 0; height: 36px"></=
+td>
+                          </tr>
+                          <tr bgcolor=3D#FFFFFF>
+                            <td class=3Dside-padding style=3D"padding: 0 44=
+px 0 44px">
+                            =20
+                              <p style=3D"
+                                  font-family: &#39;Inter&#39;, sans-serif;
+                                  font-weight: 500;
+                                  font-size: 16px;
+                                  color: #3c4043;
+                                  letter-spacing: -0.02px;
+                                  line-height: 24px;
+                                ">
+                                Hi hpllaa,
+                              </p>
+                              <p style=3D"
+                                  font-family: &#39;Inter&#39;, sans-serif;
+                                  font-weight: 500;
+                                  font-size: 16px;
+                                  color: #3c4043;
+                                  letter-spacing: -0.02px;
+                                  line-height: 24px;
+                                ">
+                                    You=E2=80=99re now part of the world=E2=
+=80=99s largest data science community. Welcome, we=E2=80=99re glad you=E2=
+=80=99re here!
+                              </p>
+                              <p style=3D"
+                                  font-family: &#39;Inter&#39;, sans-serif;
+                                  font-weight: 500;
+                                  font-size: 16px;
+                                  color: #3c4043;
+                                  letter-spacing: -0.02px;
+                                  line-height: 24px;
+                                ">
+                                    Whether you=E2=80=99re new to machine l=
+earning or a renowned expert, we want to support you with powerful tools an=
+d resources to help you grow as a data scientist.
+
+                              </p>
+    <p style=3D"
+                                  font-family: &#39;Inter&#39;, sans-serif;
+                                  font-weight: 500;
+                                  font-size: 16px;
+                                  color: #3c4043;
+                                  letter-spacing: -0.02px;
+                                  line-height: 24px;
+                                ">
+                               <b>So, where=E2=80=99s the best place to sta=
+rt?</b>
+
+
+                              </p>
+    <p style=3D"
+                                  font-family: &#39;Inter&#39;, sans-serif;
+                                  font-weight: 500;
+                                  font-size: 16px;
+                                  color: #3c4043;
+                                  letter-spacing: -0.02px;
+                                  line-height: 24px;
+                                ">
+                               We highly recommend trying out our popular T=
+itanic competition. You=E2=80=99ll be challenged to predict which passenger=
+s survived the infamous 1912 shipwreck.
+
+                              </p>
+
+                             =20
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </td>
+                  </tr>
+
+             =20
+               =20
+                  <tr bgcolor=3D#FFFFFF>
+                    <td align=3Dcenter>
+
+                      <div style=3D"padding-top: -60px;">
+                        <!--[if mso]>
+                          <v:roundrect
+                            xmlns:v=3D"urn:schemas-microsoft-com:vml"
+                            xmlns:w=3D"urn:schemas-microsoft-com:office:wor=
+d"
+                            href=3D"http://"
+                            style=3D"
+                              height: 36px;
+                              v-text-anchor: middle;
+                              width: 200px;
+                            "
+                            arcsize=3D"50%"
+                            strokecolor=3D"#e6e6e8"
+                            fillcolor=3D"#fafafb"
+                          >
+                            <w:anchorlock />
+                            <center
+                              style=3D"
+                                color: #2f353e;
+                                font-family: sans-serif;
+                                font-size: 13px;
+                                font-weight: bold;
+                              "
+                            >
+                           Get Started Here
+                            </center>
+                          </v:roundrect> <!
+                        [endif]--><a href=3Dhttps://c.gle/AF5yWjCit_KHKlhaq=
+3kJ0dBi4QYLemTlfvZZHc90M8lqNxa42RGwfOQUn86HD7E8X6Hql1fzsAhXhLn0W-pFRZqa3KUV=
+CpMAsHW04jB38AKC_Mx7mzAPvraMe7f3IjCBMC12AQ2kChrpVavpqWVfvvw671tzwGso1vlUjsR=
+d2bJI9sUiIIXvIZsF7dH_-NSamCwo8ajCpB3vi_MbP0wlSMs style=3D"
+                            background-color: #000000;
+                            padding: 11px 24px 11px 24px;
+                            margin: 10px 0 0px 0;
+                            border-radius: 20px;
+                            font-family: &#39;Inter&#39;, sans-serif;
+                            font-weight: 600;
+                            font-size: 14px;
+                            color: #ffffff;
+                            letter-spacing: 0;
+                            display: inline-block;
+                            text-align: center;
+                            text-decoration: none;
+                            -webkit-text-size-adjust: none;
+                            mso-hide: all;
+                          " title=3D"Get Started Here=E2=80=8B">Get Started=
+ Here</a>
+                      </div>
+                    </td>
+                  </tr>
+             =20
+                  <tr bgcolor=3D#FFFFFF>
+                    <td class=3Dside-padding style=3D"padding: 0 44px 0 44p=
+x">
+                      <p style=3D"
+                          font-family: &#39;Inter&#39;, sans-serif;
+                          font-weight: 500;
+                          font-size: 16px;
+                          color: #3c4043;
+                          letter-spacing: -0.02px;
+                          line-height: 24px;
+                        ">
+It=E2=80=99s a quick way to get a strong grasp of how our platform works. Y=
+ou=E2=80=99ll become more familiar with how our notebooks (online coding en=
+vironment with no cost GPUs), open datasets, and open pretrained models wor=
+k together to help you build data science projects.                     =20
+</p>
+<br>
+<hr>
+<br>
+<p style=3D"
+                                  font-family: &#39;Inter&#39;, sans-serif;
+                                  font-weight: 500;
+                                  font-size: 16px;
+                                  color: #3c4043;
+                                  letter-spacing: -0.02px;
+                                  line-height: 24px;
+                                ">
+<b>Your agreement with Kaggle</b>
+<br>
+<br>
+<i>About your Kaggle Account</i>
+<br>
+<br>
+A Kaggle Account allows you to access a range of Kaggle services, such as n=
+otebooks, datasets, and machine learning competitions.=20
+<br>
+<br>
+<i>Terms of Use</i>
+<br>
+<br>
+The <a href=3Dhttps://c.gle/AF5yWjDQ64rNbejbGNtskBTver9MCObmEvG-T0y_Rii7taw=
+9T2JjD5n7vZqk3BOntdmoLOBa1dG6TLrNnar3mJEv8UbgOk1HHwmHksNYkDUn2d1vpP2bqojPDi=
+6a target=3D_blank>Kaggle Terms of Use</a> help to define the relationship =
+between you and Kaggle. They describe what you can expect from using Kaggle=
+ services and what we expect from you.
+Kaggle services are provided by and you have a contract with:
+</p>
+
+<div style=3D"margin-left: 30px;">
+<p style=3D"
+                                  font-family: &#39;Inter&#39;, sans-serif;
+                                  font-weight: 500;
+                                  font-size: 16px;
+                                  color: #3c4043;
+                                  letter-spacing: -0.02px;
+                                  line-height: 24px;
+                                ">
+Kaggle Inc.<br>
+1600 Amphitheatre Parkway<br>
+Mountain View, California 94043 <br>
+United States of America<br>
+support@kaggle.com
+</p>
+</div>
+
+<p style=3D"
+                                  font-family: &#39;Inter&#39;, sans-serif;
+                                  font-weight: 500;
+                                  font-size: 16px;
+                                  color: #3c4043;
+                                  letter-spacing: -0.02px;
+                                  line-height: 24px;
+                                ">
+You can use your Kaggle Account for an unlimited time. That means that the =
+contract doesn=E2=80=99t end automatically, but you can terminate it when y=
+ou want.=20
+<br>
+<br>
+<i>Right of withdrawal</i>
+<br>
+<br>
+If you=E2=80=99re an EEA-based consumer, your contract with Kaggle is by la=
+w subject to an automatic right of withdrawal for 14 days from the date of =
+the conclusion of the contract. To exercise the right of withdrawal, you mu=
+st inform us of your decision to withdraw from this contract by an unequivo=
+cal statement (e.g. a letter sent by post or an e-mail). You can find conta=
+ct details in the <a href=3Dhttps://c.gle/AF5yWjDQ64rNbejbGNtskBTver9MCObmE=
+vG-T0y_Rii7taw9T2JjD5n7vZqk3BOntdmoLOBa1dG6TLrNnar3mJEv8UbgOk1HHwmHksNYkDUn=
+2d1vpP2bqojPDi6a target=3D_blank>Kaggle Terms of Use</a>. You don=E2=80=99t=
+ need to give a reason for your withdrawal and your withdrawal is within th=
+e deadline if you send us the withdrawal request before the withdrawal peri=
+od expires.
+</p>
+ <br>
+<hr>
+<br>
+<p style=3D"
+                                  font-family: &#39;Inter&#39;, sans-serif;
+                                  font-weight: 500;
+                                  font-size: 16px;
+                                  color: #3c4043;
+                                  letter-spacing: -0.02px;
+                                  line-height: 24px;
+                                ">
+<b>Questions?</b>
+<br>
+<br>
+Visit our <a href=3Dhttps://c.gle/AF5yWjBTEW-KHngYoJCXIFc4d-F47Pox70v0LQPfN=
+-eMHaXwtPApxhqkE3jaZmOdcsYVLmVIPKW89_djxwGX_gXlnl6aMXEJjUIR2hhynOkIDOLuZ_qr=
+kwmV5Svv-sg target=3D_blank>Help Center</a> to learn all about your new Kag=
+gle=20
+    Account, find answers to FAQs and to reach out to our support team.
+
+</p>
+                      <p style=3D"
+                          font-family: &#39;Inter&#39;, sans-serif;
+                          font-weight: 500;
+                          font-size: 16px;
+                          padding-bottom: 40px;
+                          color: #3c4043;
+                          letter-spacing: -0.02px;
+                          line-height: 24px;
+                        ">
+                        Happy exploring,<br><br>The Kaggle Team
+
+                      </p>
+                    </td>
+                  </tr>
+
+                  <tr>
+                    <td class=3Dside-padding style=3D"padding: 0 24px 0 24p=
+x">
+                      <p style=3D"
+                          font-family: &#39;Inter&#39;, sans-serif;
+                          font-weight: 500;
+                          font-size: 12px;
+                          color: #5f6368;
+                          padding-top: 30px;
+                          letter-spacing: 0;
+                          text-align: center;
+                          line-height: 20px;
+                        ">
+                        Kaggle, Inc 1600 Amphitheatre Pkwy Mountain View, C=
+A
+                        94043
+                      </p>
+                      <p style=3D"
+                          font-family: &#39;Inter&#39;, sans-serif;
+                          font-weight: 500;
+                          font-size: 12px;
+                          color: #5f6368;
+                          letter-spacing: 0;
+                          text-align: center;
+                          line-height: 20px;
+                        ">
+                        You=E2=80=99ve received this email to confirm that =
+you&#39;re registered for Kaggle.
+</p>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </center>
+  </body>
+</html>
+--000000000000e702dc063f3ecc68--

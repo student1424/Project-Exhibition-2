@@ -1,0 +1,13 @@
+From: "Bank of Aamerica Security" <security@bancoamerica.co>
+To: <user@example.com>
+Subject: [Action Required] Unusual Sign-in Attempt
+Content-Type: text/plain;
+
+We detected an unusual sign-in to your account from a new device.
+
+Location: Moscow, Russia
+
+If this was not you, please secure your account immediately by verifying your details on our security page: http://bankofamerica.login-management-real.com
+
+Sincerely,
+The Security Team

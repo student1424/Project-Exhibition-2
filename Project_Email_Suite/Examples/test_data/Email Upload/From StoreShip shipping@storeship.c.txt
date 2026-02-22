@@ -1,0 +1,10 @@
+From: "StoreShip" <shipping@storeship.com>
+To: <user@example.com>
+Subject: Your order #SH123456 has shipped!
+Content-Type: text/plain;
+
+Dear Customer,
+
+Great news! Your order #SH123456 has been shipped and is on its way to you. You can track your package using the tracking number: 1Z999AA10123456789.
+
+We appreciate your business.

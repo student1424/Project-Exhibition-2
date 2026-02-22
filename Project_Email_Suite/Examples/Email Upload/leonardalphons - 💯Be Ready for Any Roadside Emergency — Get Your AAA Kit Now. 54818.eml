@@ -1,0 +1,163 @@
+Delivered-To: leonardalphons@gmail.com
+Received: by 2002:a05:7110:9414:b0:276:b154:12ff with SMTP id di20csp2821080geb;
+        Wed, 10 Sep 2025 15:05:36 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IGE1dWtIdk++1DVE4zFbN3ZzA1KWV5XoUJntc2E2Sk5UcBH7cv6uKmTf1jQgc+jHdpK2Xh4
+X-Received: by 2002:a05:6a20:6a0d:b0:25b:522e:52c6 with SMTP id adf61e73a8af0-25cf5d0aa6emr1600503637.2.1757541936478;
+        Wed, 10 Sep 2025 15:05:36 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1757541936; cv=none;
+        d=google.com; s=arc-20240605;
+        b=dGteFUuCjrW74CY9MLDsa1TVBlxhC/mNe0Qy2yggCKN8QVJcsoGe3pKMAdpNw58MXB
+         uP1A9xFBbvvj4rP4uQ9Wj4gMU7jzg+7/L62+q3cmLnRXeWZBla5pQtS7PQA6E+dVR/ha
+         X0NHnsOsLkWOQFPncoToAJ/2h0TOFauk/ZFBknc7iZxwz91S/tPTAflGOfbiVa/mjBs3
+         j9SZBUlbiyOs7JeemnXmxFXf2WgTn6/QjAoGa7VDZZ5NbE8Z7HlkQ9DBYBZbc+2sK+YR
+         0b9jdohhvmVcx/8UKSt2c4ny5hZEk4jEPGfkaXQXLbcHLw/qGzw4Fg76VvSTzdetrl0j
+         RNHw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=mime-version:subject:to:from:date:domainkey-signature
+         :dkim-signature:message-id;
+        bh=e1PgBF8LRE5UPf2D8DdvQIvNjtW+NAFzNO0hEQ9+b54=;
+        fh=cZrAZRS1ar0EMpv6vmxTke91siH1+JlpzCAaJ3gWY5E=;
+        b=HHYs1HVm3NlpCgmJRxV58flHcaN26mjFPhwpMPirzxqkruqXti/ZE7Ly2wT/Rw/ym+
+         HS8MU7gs3RL8Mi3iOSYpAv2HyLpW+Rn9qSvwauX3zxNaz4Iqd8acFBmij/fg2UETXj8Z
+         uTgPV19oR/E2+qXLUvX0JdZSYUr7u//6hjWnDpT+ThV7HLUwTBazLxojw7Lz9rsD7I7W
+         2TiudL9K/j0HJLh6dVISYMfkBg8v5vFiXwN6AzAxgaaa9ilSieRIPkeFQgVrHXmV0F5M
+         A35r9I6K/bUbI2ukvvN/3E3fjb8Zyetpj1FoLbf54OCVIKdXhUxwZiLGZpJ41FnnaeEx
+         AxoA==;
+        dara=google.com
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@aynsl89w.easynettech.com.tr header.s=smtp header.b=afEyXTF2;
+       spf=pass (google.com: domain of 366-963715@f23ghf3gh.easynettech.com.tr designates 51.79.251.18 as permitted sender) smtp.mailfrom=366-963715@f23ghf3gh.easynettech.com.tr
+Return-Path: <366-963715@f23ghf3gh.easynettech.com.tr>
+Received: from returnpathtohell.it.com (vps-e7504873.vps.ovh.ca. [51.79.251.18])
+        by mx.google.com with ESMTPS id 41be03b00d2f7-b4cd318d3ccsi22538718a12.790.2025.09.10.15.05.35
+        for <leonardalphons@gmail.com>
+        (version=TLS1 cipher=ECDHE-ECDSA-AES128-SHA bits=128/128);
+        Wed, 10 Sep 2025 15:05:36 -0700 (PDT)
+Received-SPF: pass (google.com: domain of 366-963715@f23ghf3gh.easynettech.com.tr designates 51.79.251.18 as permitted sender) client-ip=51.79.251.18;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@aynsl89w.easynettech.com.tr header.s=smtp header.b=afEyXTF2;
+       spf=pass (google.com: domain of 366-963715@f23ghf3gh.easynettech.com.tr designates 51.79.251.18 as permitted sender) smtp.mailfrom=366-963715@f23ghf3gh.easynettech.com.tr
+Message-ID: <68c1f630.630a0220.a778b.28daSMTPIN_ADDED_BROKEN@mx.google.com>
+X-Google-Original-Message-ID: <54818 -v4pxs6h6-nfyatee4-wuq0z96k-badcm4k6@convertkit-mail2.com>
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=smtp; d=aynsl89w.easynettech.com.tr;
+ h=Date:From:To:Subject:Message-ID:MIME-Version:Content-Type; i=leonardalphons@aynsl89w.easynettech.com.tr;
+ bh=sjvvSYQH0bwUJwVFcveYWWNFfwQ=;
+ b=afEyXTF2/1UCxJi/PlgqaXCxPvMwCakQktNlAKXal3T/5JIMZNa8EuRPwe025Uq3J82eHjq8aCRx
+   QFnINrVCBJAxbdTtfMr1lYCa2COZA2oRs/VdYi2dylLme/IUYrkDOGnbFSgMp2d3wb0PrBNULvDW
+   NFjWSR/stbN23dutTGs=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=smtp; d=aynsl89w.easynettech.com.tr;
+ b=rYtOznyn3A9PNxkKIG+XA+BjPerf+/vzS6Mt6xQbzKCguhUZM3oH37blHyuNhe8ciWQ/OI1KRr4J
+   A5xGBbh7HPGIEtX/iZaimeS/QfbRMXhrGgnhpRvm4z54pAp7Bv/gYLfmHwb4lNtKhXQq2+lISbKT
+   b/T7LJZ1mrvG9Jgq6KY=;
+Date: Wed, 10 Sep 2025 22:05:35 +0000.366-963715
+From: " 'AAA_Emergency_Kit_Offer' " <leonardalphons@aynsl89w.easynettech.com.tr>
+To: leonardalphons@gmail.com; 54818-[offre_id]
+Subject:  leonardalphons -  💯Be Ready for Any Roadside Emergency — Get Your AAA Kit Now. 54818 
+X-Google-Sender-Delegation: AAA
+MIME-Version: 1.0
+Content-Type: multipart/report; boundary="000000000000SGCNuB7Qm6umj710elBSQB"; report-type=delivery-status
+
+--000000000000SGCNuB7Qm6umj710elBSQB Content-Type: multipart/related;
+boundary="000000000000B0MNRUNyYR84HR9a" --000000000000B0MNRUNyYR84HR9a
+--000000000000SGCNuB7Qm6umj710elBSQB
+Content-Type: multipart/related; boundary="000000000000B0MNRUNyYR84HR9a"
+
+--000000000000B0MNRUNyYR84HR9a
+Content-Type: multipart/alternative; boundary="000000000000B0MNRUNyYR84HR9b"
+
+--000000000000B0MNRUNyYR84HR9b
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+Top Stories of the Day: Sep 0, 2019
+
+103882302891885308
+54818-43-366-963715-21
+-----
+
+If you believe this has been sent to you in error, please safely unsubscribe
+--000000000000B0MNRUNyYR84HR9b
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: 8bit+
+
+
+
+<!------------ START SOCIAL MEDIA ------------>
+<div class="gmail_quote"> 
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <a href="https://storage.googleapis.com/polaqenboxqat/hiqachonsrety.html#4AqTdU54818hBJe43hawvalduqi366UMKMIJBOMYWQGDT963715RYVK2461t21
+
+" style="text-decoration:none;color:#000000;background:linear-gradient();" >
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AAA - Car Emergency Kit</title>
+</head>
+<body style="margin: 0; padding: 0; font-family: 'Poppins', sans-serif; color: #333; background-color: #F4F6F9;">
+    <!-- Main Container -->
+    <div style="max-width: 700px; margin: 60px auto; background-color: #FFFFFF; border-radius: 15px; box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1); border-top: 5px solid #FFCC00; border-bottom: 5px solid #FFCC00;">
+        
+        <!-- Header -->
+        <div style="text-align: center; padding: 40px 20px; background: #003366; color: #FFFFFF; border-radius: 12px 12px 0 0;">
+            <h1 style="font-size: 40px; margin: 0; font-weight: 600; letter-spacing: 1px;">
+                <span style="color: #ffffff;">A</span>
+                <span style="color: #CC0033;">A</span>
+                <span style="color: #ffffff;">A</span>
+                <span> - Car Emergency Kit</span>
+            </h1>
+            <div style="width: 100px; height: 3px; background: linear-gradient(90deg, #CC0033, #FFCC00); margin: 15px auto;"></div>
+            <span style="background-color: #CC0033; color: white; padding: 5px 15px; border-radius: 20px; font-size: 25px; font-weight: bold; display: inline-block; margin: 10px auto; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);">
+                RESPOND AND WIN
+            </span>
+        </div>
+        
+        <!-- Body Content -->
+        <div style="padding: 30px; text-align: center; line-height: 1.8;">
+            <h2 style="font-size: 28px; color: #003366; margin-bottom: 10px;">
+                <u>leonardalphons</u>, Your Free Car Emergency Kit!
+            </h2>
+            <p style="font-size: 16px; color: #666; margin-bottom: 20px;">
+                You've been selected to receive a brand new AAA-approved emergency kit:
+            </p>
+            <a href="https://storage.googleapis.com/polaqenboxqat/hiqachonsrety.html#4AqTdU54818hBJe43hawvalduqi366UMKMIJBOMYWQGDT963715RYVK2461t21
+
+" style="display: inline-block; background: #CC0033; color: #FFFFFF; padding: 12px 40px; font-size: 18px; font-weight: bold; border-radius: 25px; text-decoration: none; margin-top: 15px; transition: all 0.3s;">
+                CLAIM YOUR KIT NOW
+            </a>
+            <p style="color: #CC0033; font-weight: bold; margin-top: 10px;">
+                Limited Stock Available!
+            </p>
+        </div>
+        
+        <!-- Footer -->
+       
+    </div>
+            </table></td>
+
+<br><br><br><br>
+<center>
+<br />
+</a>
+	<br/><br><br><br><br><br><br><br><br><br><br><br>
+	<br/><br><br><br><br><br><br><br><br><br><br><br>
+	<br/><br><br><br><br><br><br><br><br><br><br><br>
+	<br/><br><br><br><br><br><br><br><br><br><br><br>
+	<br/><br><br><br><br><br><br><br><br><br><br><br>
+	<br/><br><br><br><br><br><br><br><br><br><br><br>
+	<br/><br><br><br><br><br><br><br><br><br><br><br>
+	<br/><br><br><br><br><br><br><br><br><br><br><br>
+	<br/><br><br><br><br><br><br><br><br><br><br><br>
+	<br/><br><br><br><br><br><br><br><br><br><br><br>
+
+
+
+<div style="margin-top: 20px; text-align: center; font-size: 12px; color: #777;">
+  <p>
+    If you do not wish to receive this type of email, <a href="https://storage.googleapis.com/wakhdemhanina/wayalllahfokk.html#5LZnVh54818AHtG43wqqzfzxosh366JIDYNLCKLHHYDNB963715CQZN2461x21" style="color: #DB0024; text-decoration: none;">Click here to unsubscribe</a>.
+  </p>
+</div>
+</body>
+<img src="https://storage.googleapis.com/openouvert/ouvertopenning.html" width='1px' height='1px' style='visibility:hidden'>
+</html>
