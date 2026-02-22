@@ -1,6 +1,8 @@
 import os
 import email
 from tqdm import tqdm
+from email.parser import BytesParser
+
 
 # --- Configuration ---
 # UPDATED: Paths to the new extracted spam and ham folders
@@ -17,7 +19,7 @@ def get_email_body(raw_email):
     Parses a raw email string to extract its body.
     """
     try:
-        msg = email.message_from_string(raw_email)
+        msg = BytesParser().parsebytes(raw_email.encode())
         if msg.is_multipart():
             for part in msg.walk():
                 if part.get_content_type() == 'text/plain':

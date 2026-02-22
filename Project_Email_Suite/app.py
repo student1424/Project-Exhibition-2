@@ -3,7 +3,7 @@ import uuid
 from werkzeug.utils import secure_filename
 import os
 import joblib
-import pandas as pd
+# import pandas as pd
 from flask import Flask, request, jsonify, send_from_directory
 import mailparser
 
