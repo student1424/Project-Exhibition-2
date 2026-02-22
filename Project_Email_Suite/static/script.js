@@ -168,3 +168,58 @@ document.addEventListener("DOMContentLoaded", () => {
   updatePieChart(null); // Start with no chart
   refreshData(); // Load initial history and quarantine
 });
+
+async function displayEmailAnalysisResults(data) {
+  // Display ML results
+  displayMLResults(data.ml_prediction);
+  
+  // Display behavioral analysis
+  displayBehavioralAnalysis(data.behavioral_analysis);
+  
+  // Display combined verdict
+  displayFinalVerdict(data.final_verdict);
+  
+  // Update badge
+  updatePredictionBadge(data.final_verdict);
+}
+
+function displayBehavioralAnalysis(analysis) {
+  const behavioralDiv = document.getElementById('behavioral-analysis') || createBehavioralDiv();
+  
+  behavioralDiv.innerHTML = `
+    <h3>Sender Reputation Analysis</h3>
+    <div class="reputation-details">
+      <p><strong>Sender:</strong> ${analysis.sender}</p>
+      <p><strong>Domain:</strong> ${analysis.domain}</p>
+      <p><strong>Sender IP:</strong> ${analysis.ip || 'Not found'}</p>
+      <p><strong>Trust Score:</strong> <span class="score-${getTrustLevel(analysis.trust_score)}">${analysis.trust_score}/100</span></p>
+      <p><strong>Risk Level:</strong> <span class="risk-${analysis.risk_level.toLowerCase()}">${analysis.risk_level}</span></p>
+      
+      <div class="technical-checks">
+        <h4>Technical Checks:</h4>
+        <ul>
+          <li>SPF Valid: ${analysis.spf_valid ? '✓' : '✗'}</li>
+          <li>MX Records: ${analysis.mx_valid ? '✓' : '✗'}</li>
+          <li>Domain Age: ${analysis.domain_age_days > 0 ? analysis.domain_age_days + ' days' : 'Unknown'}</li>
+          <li>VirusTotal Score: ${analysis.virustotal_score.toFixed(1)}/100</li>
+          <li>Suspicious Name: ${analysis.is_suspicious_name ? '⚠️ Yes' : 'No'}</li>
+          <li>Suspicious Domain: ${analysis.is_suspicious_domain ? '⚠️ Yes' : 'No'}</li>
+        </ul>
+      </div>
+    </div>
+  `;
+}
+
+function getTrustLevel(score) {
+  if (score > 70) return 'high';
+  if (score > 40) return 'medium';
+  return 'low';
+}
+
+function createBehavioralDiv() {
+  const div = document.createElement('div');
+  div.id = 'behavioral-analysis';
+  div.className = 'card';
+  document.querySelector('.output-column').appendChild(div);
+  return div;
+}

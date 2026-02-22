@@ -5,6 +5,7 @@ from flask import Flask, request, render_template, jsonify
 import random
 from datetime import datetime
 from collections import deque
+from behavioural_pattern import analyze_sender_reputation  
 
 # --- SETUP ---
 app = Flask(__name__, template_folder='static', static_folder='static')
@@ -12,6 +13,8 @@ app = Flask(__name__, template_folder='static', static_folder='static')
 UPLOAD_FOLDER = 'data/uploads'
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 os.makedirs(UPLOAD_FOLDER, exist_ok=True)
+
+VIRUSTOTAL_API_KEY = os.environ.get('VIRUSTOTAL_API_KEY', 'your-api-key-here')
 
 # --- STATE MANAGEMENT (in-memory) ---
 # Using deque for efficient fixed-size list
@@ -156,7 +159,75 @@ def get_scans():
 def get_quarantine():
     """API endpoint to get the list of quarantined items."""
     return jsonify(quarantine_items)
+@app.route('/analyze/email', methods=['POST'])
+def analyze_email_enhanced():
+    """Analyze email with both ML classification and behavioral patterns"""
+    if 'file' not in request.files:
+        return jsonify({'error': 'No file provided'}), 400
+    
+    file = request.files['file']
+    if file.filename == '':
+        return jsonify({'error': 'No file selected'}), 400
+    
+    try:
+        raw_email = file.read()
+        
+        # Get ML prediction
+        ml_prediction = get_ml_prediction(raw_email)
+        
+        # Get behavioral pattern analysis
+        behavioral_analysis = analyze_sender_reputation(raw_email, VIRUSTOTAL_API_KEY)
+        
+        # Combine results
+        combined_result = {
+            'ml_prediction': ml_prediction,
+            'behavioral_analysis': behavioral_analysis,
+            'final_verdict': determine_final_verdict(ml_prediction, behavioral_analysis),
+            'timestamp': datetime.now().isoformat()
+        }
+        
+        # Store in history
+        scan_history.append({
+            'timestamp': datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
+            'type': 'Email',
+            'filename': file.filename,
+            'ml_result': ml_prediction.get('label'),
+            'behavioral_risk': behavioral_analysis.get('risk_level'),
+            'trust_score': behavioral_analysis.get('trust_score')
+        })
+        
+        return jsonify(combined_result)
+        
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
 
+def determine_final_verdict(ml_prediction, behavioral_analysis):
+    """Combine ML and behavioral analysis for final verdict"""
+    ml_label = ml_prediction.get('label', 'unknown')
+    trust_score = behavioral_analysis.get('trust_score', 50)
+    
+    if ml_label == 'malicious' or trust_score < 40:
+        return 'HIGH_RISK'
+    elif ml_label == 'safe' and trust_score > 70:
+        return 'SAFE'
+    else:
+        return 'MEDIUM_RISK'
+
+def get_ml_prediction(raw_email):
+    """Extract ML prediction from raw email"""
+    try:
+        # Parse email content
+        msg = email.message_from_bytes(raw_email)
+        email_content = msg.get_payload()
+        
+        # Get ML prediction
+        if model:
+            prediction = model.predict([email_content])[0]
+            return {'label': prediction, 'confidence': 0.85}
+        else:
+            return {'label': 'unknown', 'confidence': 0.0}
+    except Exception as e:
+        return {'label': 'error', 'confidence': 0.0}
 # --- RUN THE APP ---
 if __name__ == '__main__':
     app.run(debug=True)
